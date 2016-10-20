@@ -10,6 +10,7 @@ export default class extends React.Component {
         };
         this.updateItemName = this.updateItemName.bind(this);
         this.updateItemPrice = this.updateItemPrice.bind(this);
+        // this.onSend = this.onSend.bind(this);
     }
 
     updateItemName (e) {
@@ -20,16 +21,22 @@ export default class extends React.Component {
         this.setState({ itemPrice: e.target.value });
     }
 
+   
+
     render () {
         return (
-            <form>
+            <form onSubmit={this.props.onSend(this.state)}>
                 <div className="form-group">
                     <label>Item name: </label>
-                    <input type="text" id="item-name-field" />
+                    <input type="text" id="item-name-field"
+                    value={this.state.itemName.value}
+                    onChange={this.updateItemName} />
                 </div>
                 <div className="form-group">
                     <label>Item price: </label>
-                    <input type="text" id="item-price-field" />
+                    <input type="text" id="item-price-field" 
+                    value={this.state.itemPrice.value}
+                    onChange={this.updateItemPrice} />
                 </div>
                 <button type="submit">Add item to registry</button>
             </form>

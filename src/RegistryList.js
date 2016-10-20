@@ -7,6 +7,7 @@ export default class extends React.Component {
     constructor() {
         super();
         this.state = store.getState();
+        this.RegistryItem = RegistryItem.bind(this);
     }
 
     componentWillMount () {
@@ -14,8 +15,16 @@ export default class extends React.Component {
     }
 
     render() {
+        let registryItems = this.state.registryItems;
+        // console.log(registryItems);
         return (
             <div>
+                <h1>My Registry</h1>
+                <div>
+                {
+                    registryItems && registryItems.map(item => <RegistryItem itemDetails={item} key={item.id}/>)
+                }
+                </div>
             </div>
         );
     }

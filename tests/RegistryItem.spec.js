@@ -235,7 +235,7 @@ describe('Redux architecture', () => {
 
                 const newState = testingStore.getState();
                 const lastItemOnState = last(newState.registryItems);
-
+                
                 expect(newState.registryItems).to.have.length(6);
                 expect(lastItemOnState).to.be.deep.equal(dispatchedItem);
 
